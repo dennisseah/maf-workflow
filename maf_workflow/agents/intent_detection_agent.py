@@ -24,6 +24,9 @@ Response in JSON format with the following fields:
 - is_statement (bool): true if the message is a general statement, false otherwise.
 - response (string): Generate a response to the message only if it is a greeting.
   For all other message types, return an empty string.
+
+The `is_greeting`, `is_inappropriate`, `is_question`, and `is_statement` fields are
+mutually exclusive; only one of them can be true for a given message.
 """
 
 
