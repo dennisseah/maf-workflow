@@ -1,5 +1,11 @@
 version: "3"
 tasks:
+  test-unit:
+    desc: "Runs unit tests with pytest"
+    cmds:
+      - uv run python -m pytest -p no:warnings --cov-report term-missing
+        --cov=maf_workflow tests
+
   util-format-code:
     desc: "Formats the code using ruff"
     cmds:

@@ -8,8 +8,6 @@ from agent_framework import (
     Workflow,
     WorkflowBuilder,
 )
-from agent_framework.azure import AzureOpenAIChatClient
-from azure.identity import AzureCliCredential
 
 from maf_workflow.agents.customer_agent import create as create_customer_agent
 from maf_workflow.agents.intent_detection_agent import (
@@ -22,7 +20,11 @@ from maf_workflow.executors import (
     handle_statement,
     to_assistant_request,
 )
+from maf_workflow.hosting import container
 from maf_workflow.models.intent_detection_result import IntentDetectionResult
+from maf_workflow.protocols.i_azure_open_ai_chat_client_service import (
+    IAzureOpenAIChatClientService,
+)
 
 
 def get_condition(field: str):
@@ -44,8 +46,7 @@ def get_condition(field: str):
 
 
 def create() -> Workflow:
-    chat_client = AzureOpenAIChatClient(credential=AzureCliCredential())
-
+    chat_client = container[IAzureOpenAIChatClientService].get_client()
     intent_detection_agent = create_intent_detection_agent(chat_client)
     customer_assistant_agent = create_customer_agent(chat_client)
 

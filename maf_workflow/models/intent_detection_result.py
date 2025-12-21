@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 
 class IntentDetectionResult(BaseModel):
@@ -21,3 +21,23 @@ class IntentDetectionResult(BaseModel):
         ...,
         description="Generated response to the message if it is a greeting; empty string otherwise.",  # noqa: E501
     )
+
+    @model_validator(mode="after")
+    def validate_mutually_exclusive_intents(self) -> "IntentDetectionResult":
+        """Validate that is_greeting, is_inappropriate, is_question, is_statement are
+        mutually exclusive."""
+        intents = [
+            self.is_greeting,
+            self.is_inappropriate,
+            self.is_question,
+            self.is_statement,
+        ]
+        true_count = sum(intents)
+
+        if true_count != 1:
+            raise ValueError(
+                "Exactly one of is_greeting, is_inappropriate, is_question, or is_statement must be True. "  # noqa: E501
+                f"Found {true_count} set to True."
+            )
+
+        return self

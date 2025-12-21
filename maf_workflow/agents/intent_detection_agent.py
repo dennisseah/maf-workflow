@@ -36,5 +36,5 @@ def create_agent(chat_client: AzureOpenAIChatClient) -> AgentExecutor:
             instructions=SYSTEM_PROMPT,
             response_format=IntentDetectionResult,
         ),
-        id="spam_detection_agent",
+        id="intent_detection_agent",
     )
