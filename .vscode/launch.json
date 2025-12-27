@@ -2,13 +2,12 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "main",
+      "name": "samples/multi_turns_conversation.py",
       "type": "debugpy",
       "request": "launch",
-      "program": "main.py",
       "console": "integratedTerminal",
       "justMyCode": true,
-      "env": { "PYTHONPATH": "${workspaceRoot}" }
+      "module": "samples.multi_turns_conversation"
     }
   ]
 }

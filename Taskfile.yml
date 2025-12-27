@@ -1,5 +1,15 @@
 version: "3"
 tasks:
+  workflow-conditional:
+    desc: "Runs the MAF workflow with conditional steps"
+    cmds:
+      - uv run python -m samples.workflow_conditional {{.CLI_ARGS}}
+
+  multi-turns-conversation:
+    desc: "Runs the MAF multi-turns-conversation sample"
+    cmds:
+      - uv run python -m samples.multi_turns_conversation
+
   test-unit:
     desc: "Runs unit tests with pytest"
     cmds:
