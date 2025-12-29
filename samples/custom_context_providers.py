@@ -64,7 +64,7 @@ class UserGenderProvider(ContextProvider):
         self.user_id = user_id
 
     async def invoking(self, messages, **kwargs) -> Context:
-        user_gender = "Male" if old_guy else "Female"
+        user_gender = "Male" if self.user_id == old_guy else "Female"
 
         return Context(
             instructions=f"Gender: {user_gender}.",
@@ -81,7 +81,9 @@ class UserGenderProvider(ContextProvider):
 
 
 async def main():
-    "old_guy is a 60-year-old male otherwise the profile is a 16-year-old female"
+    # this is the entry point of the sample
+    # old_guy is a 60-year-old male otherwise the profile is a 16-year-old female
+
     user_id = old_guy
     agent = chat_client.create_agent(
         system_prompt=SYSTEM_PROMPT,
