@@ -33,3 +33,15 @@ replace hello with any input message to see how the workflow responds.
 ```sh
 task multi-turns-conversation
 ```
+
+## Custom Context Providers Example
+
+- This sample illustrates how to create custom context providers in MAF.
+- It includes examples of context providers that fetch user preferences and
+  system status.
+- The user preferences provider retrieves user-specific settings, while the
+  system status provider checks the current state of the system.
+
+```sh
+task custom-context-providers
+```

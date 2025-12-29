@@ -2,12 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "samples/multi_turns_conversation.py",
+      "name": "samples/multi_turns_conversation",
       "type": "debugpy",
       "request": "launch",
       "console": "integratedTerminal",
       "justMyCode": true,
       "module": "samples.multi_turns_conversation"
+    },
+    {
+      "name": "samples/custom_context_providers",
+      "type": "debugpy",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "module": "samples.custom_context_providers"
     }
   ]
 }
