@@ -48,8 +48,7 @@ class ExecutorBase(Executor):
         )
 
 
-class FactExec(ExecutorBase):
-    # inherit from ExecutorBase
+class FactExecutor(ExecutorBase):
     def __init__(self, chat_client: AzureOpenAIChatClient):
         instructions = (
             "You're an expert fact provider. Given a user's query, provide "
@@ -61,8 +60,7 @@ class FactExec(ExecutorBase):
         )
 
 
-class PoemExec(ExecutorBase):
-    # inherit from ExecutorBase
+class PoemExecutor(ExecutorBase):
     def __init__(self, chat_client: AzureOpenAIChatClient):
         instructions = (
             "You are a creative poet. Given a user's query, compose a short and "
@@ -93,12 +91,11 @@ async def consolidates(results: list[Any]) -> str:
 
 async def main():
     # this is the entry point of the sample
-
     chat_client = container[IAzureOpenAIChatClientService].get_client()
     workflow = (
         ConcurrentBuilder()
         .participants(  # include multiple agents
-            [FactExec(chat_client), PoemExec(chat_client)]
+            [FactExecutor(chat_client), PoemExecutor(chat_client)]
         )
         .with_aggregator(consolidates)  # combine results from both agents
         .build()

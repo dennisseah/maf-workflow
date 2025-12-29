@@ -15,7 +15,7 @@ tasks:
     cmds:
       - uv run python -m samples.custom_context_providers
 
-  concurrent_agent_calls:
+  concurrent-agent-calls:
     desc: "Runs the MAF concurrent_agent_calls sample"
     cmds:
       - uv run python -m samples.concurrent_agent_calls
