@@ -54,3 +54,7 @@ task custom-context-providers
   for generating creative poems.
 - The sample shows how to run these executors in parallel and consolidate their
   results into a single response.
+
+```sh
+task concurrent-agent-calls
+```
