@@ -16,6 +16,14 @@
       "console": "integratedTerminal",
       "justMyCode": true,
       "module": "samples.custom_context_providers"
+    },
+    {
+      "name": "samples/concurrent_agent_calls",
+      "type": "debugpy",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "module": "samples.concurrent_agent_calls"
     }
   ]
 }

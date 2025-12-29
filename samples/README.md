@@ -45,3 +45,12 @@ task multi-turns-conversation
 ```sh
 task custom-context-providers
 ```
+
+# Concurrent Agent Calls Example
+
+- This sample demonstrates how to execute multiple agent calls concurrently
+  using MAF.
+- It defines two executors: one for providing factual information and another
+  for generating creative poems.
+- The sample shows how to run these executors in parallel and consolidate their
+  results into a single response.
