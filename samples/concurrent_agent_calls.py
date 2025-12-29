@@ -1,5 +1,5 @@
 import asyncio
-from typing import Any
+from typing import Annotated, Any
 
 from agent_framework import (
     AgentExecutorRequest,
@@ -7,14 +7,27 @@ from agent_framework import (
     ConcurrentBuilder,
     Executor,
     WorkflowContext,
+    ai_function,
     handler,
 )
 from agent_framework.azure import AzureOpenAIChatClient
+from pydantic import Field
 
 from maf_workflow.hosting import container
 from maf_workflow.protocols.i_azure_open_ai_chat_client_service import (
     IAzureOpenAIChatClientService,
 )
+
+ID_FACT_EXECUTOR = "fact_executor"
+ID_POEM_EXECUTOR = "poem_executor"
+
+
+@ai_function
+def get_weather(
+    location: Annotated[str, Field(description="The city name")],
+) -> str:
+    """Gets the current weather for a location."""
+    return f"The weather in {location} is 72°F and sunny."
 
 
 class ExecutorBase(Executor):
@@ -44,7 +57,7 @@ class FactExec(ExecutorBase):
             "Keep your responses to 50 words or less."
         )
         super().__init__(
-            chat_client=chat_client, id="fact_exec", instructions=instructions
+            chat_client=chat_client, id=ID_FACT_EXECUTOR, instructions=instructions
         )
 
 
@@ -57,7 +70,7 @@ class PoemExec(ExecutorBase):
             "Keep your responses to 50 words or less."
         )
         super().__init__(
-            chat_client=chat_client, id="poem_exec", instructions=instructions
+            chat_client=chat_client, id=ID_POEM_EXECUTOR, instructions=instructions
         )
 
 
@@ -70,12 +83,10 @@ async def consolidates(results: list[Any]) -> str:
         final_text = messages[-1].text
         exec_id = getattr(r, "executor_id")
 
-        if exec_id == "fact_exec":
+        if exec_id == ID_FACT_EXECUTOR:
             output.append(f"Fact Expert Output:\n{final_text}")
-        elif exec_id == "poem_exec":
+        elif exec_id == ID_POEM_EXECUTOR:
             output.append(f"Poem Expert Output:\n{final_text}")
-
-        output.append(final_text)
 
     return "\n".join(output)
 
@@ -87,17 +98,16 @@ async def main():
     workflow = (
         ConcurrentBuilder()
         .participants(  # include multiple agents
-            [
-                FactExec(chat_client),
-                PoemExec(chat_client),
-            ]
+            [FactExec(chat_client), PoemExec(chat_client)]
         )
         .with_aggregator(consolidates)  # combine results from both agents
         .build()
     )
 
     output = await workflow.run("We are planning a trip to Japan.")
-    print(output)
+    for o in output:
+        if o.data:
+            print(o.data)
 
 
 if __name__ == "__main__":
