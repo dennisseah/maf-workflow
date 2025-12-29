@@ -1,5 +1,5 @@
 import asyncio
-from typing import Annotated, Any
+from typing import Any
 
 from agent_framework import (
     AgentExecutorRequest,
@@ -7,11 +7,9 @@ from agent_framework import (
     ConcurrentBuilder,
     Executor,
     WorkflowContext,
-    ai_function,
     handler,
 )
 from agent_framework.azure import AzureOpenAIChatClient
-from pydantic import Field
 
 from maf_workflow.hosting import container
 from maf_workflow.protocols.i_azure_open_ai_chat_client_service import (
@@ -20,14 +18,6 @@ from maf_workflow.protocols.i_azure_open_ai_chat_client_service import (
 
 ID_FACT_EXECUTOR = "fact_executor"
 ID_POEM_EXECUTOR = "poem_executor"
-
-
-@ai_function
-def get_weather(
-    location: Annotated[str, Field(description="The city name")],
-) -> str:
-    """Gets the current weather for a location."""
-    return f"The weather in {location} is 72°F and sunny."
 
 
 class ExecutorBase(Executor):
