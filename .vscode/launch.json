@@ -18,6 +18,14 @@
       "module": "samples.custom_context_providers"
     },
     {
+      "name": "samples/sequential_flow",
+      "type": "debugpy",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "module": "samples.sequential_flow"
+    },
+    {
       "name": "samples/concurrent_agent_calls",
       "type": "debugpy",
       "request": "launch",

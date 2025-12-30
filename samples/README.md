@@ -46,6 +46,18 @@ task multi-turns-conversation
 task custom-context-providers
 ```
 
+# Simple Sequential Flow Example
+
+- This sample demonstrates a simple sequential workflow using MAF.
+- It defines two executors: one for providing factual information and another
+  for summarizing that information.
+- The sample shows how to chain these executors together in a sequence to
+  process a user query.
+
+```sh
+task sequential-flow
+```
+
 # Concurrent Agent Calls Example
 
 - This sample demonstrates how to execute multiple agent calls concurrently
