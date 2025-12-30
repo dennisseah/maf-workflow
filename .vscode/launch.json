@@ -40,6 +40,14 @@
       "console": "integratedTerminal",
       "justMyCode": true,
       "module": "samples.fan_in_fan_out"
+    },
+    {
+      "name": "samples/middleware",
+      "type": "debugpy",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "module": "samples.middleware"
     }
   ]
 }

@@ -82,3 +82,11 @@ task concurrent-agent-calls
 ```sh
 task fan-in-fan-out
 ```
+
+## Middleware Example
+
+- This sample demonstrates the use of middleware in MAF.
+- It includes a booking executor that checks flight availability and applies
+  middleware to modify its behavior based on user status.
+- The middleware checks if the user is a gold member and grants priority
+  boarding if applicable.

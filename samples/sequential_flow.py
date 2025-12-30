@@ -40,6 +40,7 @@ async def summarize_executor(text: str, ctx: WorkflowContext[Never, str]) -> Non
 
 
 async def main() -> None:
+    # Begin by building the workflow
     workflow = (
         WorkflowBuilder()
         .add_edge(fact_executor, summarize_executor)
