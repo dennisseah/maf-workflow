@@ -58,3 +58,15 @@ task custom-context-providers
 ```sh
 task concurrent-agent-calls
 ```
+
+## Fan-In/Fan-Out Pattern Example
+
+- This sample showcases the Fan-In/Fan-Out pattern using MAF WorkflowBuilder
+- It defines two executors: one for generating poems and another for fetching
+  factual information.
+- The sample demonstrates how to run these executors concurrently and then
+  consolidate their outputs into a unified response.
+
+```sh
+task fan-in-fan-out
+```

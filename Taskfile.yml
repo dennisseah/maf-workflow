@@ -20,6 +20,11 @@ tasks:
     cmds:
       - uv run python -m samples.concurrent_agent_calls
 
+  fan-in-fan-out:
+    desc: "Runs the MAF fan-in-fan-out sample"
+    cmds:
+      - uv run python -m samples.fan_in_fan_out
+
   test-unit:
     desc: "Runs unit tests with pytest"
     cmds:

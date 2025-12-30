@@ -24,6 +24,14 @@
       "console": "integratedTerminal",
       "justMyCode": true,
       "module": "samples.concurrent_agent_calls"
+    },
+    {
+      "name": "samples/fan_in_fan_out",
+      "type": "debugpy",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "module": "samples.fan_in_fan_out"
     }
   ]
 }
