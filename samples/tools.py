@@ -29,7 +29,10 @@ tourist_guide_agent = chat_client.create_agent(
         "You are a tourist guide. Provide 3 place of interests for a given location. "
         "Just name the places without any additional information."
     ),
-).as_tool()
+).as_tool(
+    name="tourist_guide_agent",
+    description="Get 3 place of interests for a given location.",
+)
 
 
 async def main():
