@@ -2,6 +2,16 @@
 
 Some sample to demonstrate MAF capabilities.
 
+## Tools Example
+
+- This sample demonstrates various tools available in MAF.
+- It includes having function as tool and agent as tool.
+- The sample shows how to use these tools to process user queries.
+
+```sh
+task tools
+```
+
 ## Conditional Workflow Example
 
 - When an input is provided, the sample code figures out if the message is

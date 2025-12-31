@@ -1,5 +1,10 @@
 version: "3"
 tasks:
+  tools:
+    desc: "Runs the MAF tools sample"
+    cmds:
+      - uv run python -m samples.tools
+
   workflow-conditional:
     desc: "Runs the MAF workflow with conditional steps"
     cmds:

@@ -2,6 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "samples/tools",
+      "type": "debugpy",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "module": "samples.tools"
+    },
+    {
       "name": "samples/multi_turns_conversation",
       "type": "debugpy",
       "request": "launch",
